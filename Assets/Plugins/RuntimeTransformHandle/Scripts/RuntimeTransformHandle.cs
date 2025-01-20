@@ -221,12 +221,7 @@ namespace RuntimeHandle
         public void SetTarget(Transform newTarget)
         {
             target = newTarget;
-        }
-
-        public void SetTarget(GameObject newTarget)
-        {
-            target = newTarget.transform;
-
+            
             if (target == null)
                 target = transform;
 
@@ -234,6 +229,11 @@ namespace RuntimeHandle
                 gameObject.SetActive(false);
             else if(disableWhenNoTarget && target != transform)
                 gameObject.SetActive(true);
+        }
+
+        public void SetTarget(GameObject newTarget)
+        {
+            SetTarget(newTarget.transform);
         }
 
         public void SetHandleMode(int mode)
